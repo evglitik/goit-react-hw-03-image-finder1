@@ -1,18 +1,27 @@
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
+import { Component } from 'react';
+import { ImageGalleryList } from './ImageGallery.styled';
 
-export const ImageGallery = ({ images }) => {
+export class ImageGallery extends Component {
+  state = {
+
+  }
+
+  render() {
+    const { images, onModal } = this.props;
+
     return (
-      <ul>
-        {images.map(({ id, webformatURL, largeImageURL }) => {
+      <ImageGalleryList onClick={e => onModal(e.target.dataset.id)}>
+        {images.map(({ id, webformatURL }) => {
           return (
             <ImageGalleryItem
               key={id}
               id={id}
               webformatURL={webformatURL}
-              largeImageURL={largeImageURL}
             />
           );
         })}
-      </ul>
+      </ImageGalleryList>
     );
+  }
 };
