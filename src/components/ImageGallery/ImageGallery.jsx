@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 
 export const ImageGallery = ({ images, onModal }) => {
   return (
-    <ImageGalleryList onClick={e => onModal(e.target.dataset.id)}>
+    <ImageGalleryList onClick={e => {
+      if (e.target !== e.currentTarget) {
+        onModal(e.target.dataset.id)
+      }
+    }
+    }>
       {images.map(({ id, webformatURL }) => {
         return (
           <ImageGalleryItem key={id} id={id} webformatURL={webformatURL} />
