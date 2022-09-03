@@ -49,14 +49,8 @@ export class App extends Component {
 
   openModal = id => {
     const { images } = this.state;
-
-    images.map(el => {
-      if (el.id === Number(id)) {
-        this.setState({ modalImg: el.largeImageURL });
-      }
-    });
-
-    this.setState({ isModalOpen: true });
+    const modalUrlImg = images.find(el => el.id === Number(id)).largeImageURL;
+    this.setState({ isModalOpen: true, modalImg: modalUrlImg });
   };
 
   closeModal = () => {
