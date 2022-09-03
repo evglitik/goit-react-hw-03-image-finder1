@@ -1,4 +1,5 @@
 import { ModalContainer, Overlay } from './Modal.styled';
+import PropTypes from 'prop-types';
 
 export const Modal = ({ img, onClosseModal }) => {
   return (
@@ -14,4 +15,9 @@ export const Modal = ({ img, onClosseModal }) => {
       </ModalContainer>
     </Overlay>
   );
+};
+
+Modal.propTypes = {
+  img: PropTypes.string.isRequired,
+  onClosseModal: PropTypes.func.isRequired,
 };

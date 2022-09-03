@@ -5,12 +5,16 @@ import {
   SearchFormButtonLabel,
   SearchFormInput,
 } from './Searchbar.styled';
-
+import PropTypes from 'prop-types';
 const { Component } = require('react');
 
 export class Searchbar extends Component {
   state = {
     request: '',
+  };
+
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
   };
 
   handleRequestChange = e => {
@@ -21,7 +25,7 @@ export class Searchbar extends Component {
     e.preventDefault();
 
     if (this.state.request.trim() === '') {
-      //  console.log('Введите название картинки');
+      console.log('Введите название картинки');
       return;
     }
     this.props.onSubmit(this.state.request);
